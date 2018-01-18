@@ -14,11 +14,12 @@ before_install:
 
 script: 
  - echo `pwd`
+ - cd /MITgcm/verification
  - MITGCM_TROPT="-devel -of=../tools/build_options/linux_amd64_gfortran"
- - echo $MITGCM_TROPT
- - exit
+ - MITGCM_DECMD="docker exec -i fc11-testreport bash -c"
  # aim.5l_cs
- - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -t aim.5l_cs -devel -of=../tools/build_options/linux_amd64_gfortran | tee aim.5l_cs/testreport_out.txt"
+ - MITGCM_EXP="aim.5l_cs" ${MITGCM_DECMD} "./testreport -t $MITGCM_EXP $MITGCM_TROPT | tee ${MITGCM_EXP}/testreport_out.txt"
+ - exit
  - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; python verification_parser.py -filename 'aim.5l_cs/testreport_out.txt' -threshold 14 16"
  # global_ocean.cs32x15
  - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -t global_ocean.cs32x15 | tee global_ocean.cs32x15/testreport_out.txt"
