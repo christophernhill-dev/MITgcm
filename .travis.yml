@@ -15,7 +15,7 @@ before_install:
 script: 
  - echo `pwd`
  # aim.5l_cs
- - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -t aim.5l_cs  -devel -of=../tools/build_options/linux_amd64_gfortran | tee aim.5l_cs/testreport_out.txt"
+ - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -t aim.5l_cs -devel -of=../tools/build_options/linux_amd64_gfortran | tee aim.5l_cs/testreport_out.txt"
  - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; python verification_parser.py -filename 'aim.5l_cs/testreport_out.txt' -threshold 14 16"
  # global_ocean.cs32x15
  - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -t global_ocean.cs32x15 | tee global_ocean.cs32x15/testreport_out.txt"
