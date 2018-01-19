@@ -17,7 +17,7 @@ script:
  - MITGCM_TROPT="-devel -of=../tools/build_options/linux_amd64_gfortran"
  - MITGCM_DECMD="docker exec -i fc11-testreport bash -c"
  # Test report runs
- - MITGCM_EXP="aim.5l_cs";                  MITGCM_PRECS="14 16";          . tools/ci/runtr.sh
+ - MITGCM_EXP="aim.5l_cs";                  MITGCM_PRECS="14 18";          . tools/ci/runtr.sh
  - MITGCM_EXP="global_ocean.cs32x15";       MITGCM_PRECS="16 16 16 16 16"; . tools/ci/runtr.sh
  - MITGCM_EXP="global_ocean.90x40x15";      MITGCM_PRECS="16 16 16";       . tools/ci/runtr.sh
  - MITGCM_EXP="hs94.cs-32x32x5";            MITGCM_PRECS="13 16";          . tools/ci/runtr.sh
@@ -30,4 +30,4 @@ script:
  - MITGCM_EXP="tutorial_global_oce_in_p";   MITGCM_PRECS="16";             . tools/ci/runtr.sh
  - MITGCM_EXP="tutorial_plume_on_slope";    MITGCM_PRECS="16";             . tools/ci/runtr.sh
  # Generate a summary
- - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -q"
+ - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport ${MITGCM_TROPT} -q"
