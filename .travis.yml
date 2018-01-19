@@ -17,7 +17,7 @@ script:
  - MITGCM_TROPT="-devel -of=../tools/build_options/linux_amd64_gfortran"
  - MITGCM_DECMD="docker exec -i fc11-testreport bash -c"
  # aim.5l_cs
- - MITGCM_EXP="aim.5l_cs"; MITGCM_PRECS="14 16"; tools/ci/runtr.sh
+ - MITGCM_EXP="aim.5l_cs"; MITGCM_PRECS="14 16"; . tools/ci/runtr.sh
  - exit
  # global_ocean.cs32x15
  - docker exec -i fc11-testreport bash -c "cd /MITgcm/verification; ./testreport -t global_ocean.cs32x15 | tee global_ocean.cs32x15/testreport_out.txt"
